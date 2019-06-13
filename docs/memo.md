@@ -41,8 +41,46 @@
 - DIはインスタンス管理をする。@Autowiredアノテーションをフィールドなどに付けると、DIコンテナからインスタンスを取得する。
 - 具体的にはインスタンスの生成とインスタンスのライフサイクル管理（破棄）をする。このおかげでクラスをnewしたり、使い終わった変数にnullを入れる必要がなくなる。
 
-### 4-3-1 インタフェース
+## 4-2
+
+- DIは依存性の注入
+- 「依存性」と「注入」を分けて考えるとよい
+
+### 4-2-1 インタフェース（依存性の話）
 
 - Carクラスが依存するのをHondaEngineクラスではなく、Engineインタフェースにしておくと、NissanEngineへの切り替え時に、Carクラスの変更が不要になる。
 - Carクラスのテストも、DummyEngineクラスを用意してテストすればよい。疎結合。
 - ただこれだとMainクラスなど、Carクラスをインスタンス化するところで、HondaEngineやNissanEngineの指定が必要になる。依存性が残る。
+
+### 4-2-2 Factoryメソッドパターン（注入の話）
+
+```java
+    Engine hondaEngine1 = new HondaEngine();
+
+    Car car1 = new Car(HondaEngine1);
+```
+
+- 上記のように変数にインスタンスを入れることを注入という。
+- newするコードがMainクラスにあると修正範囲が大きくなる。
+- Factoryメソッドパターンで解決できる。
+- 下記のような簡易的なFactoryメソッドパターンであれば、メソッドをstaticにする。こうすることで、Factoryインスタンスを生成せずにメソッドを呼び出せる。  
+
+```java
+// Factoryクラス
+public class EngineFactory {
+    public static Engine createHondaEngine() {
+        return new HondaEngineVer2();
+    }
+}
+```
+
+- Mainクラスの修正は不要になる。
+
+```java
+// Mainクラス
+public void main {
+    public static void main(String[] args) {
+        Engine hondaEngine1 = EngineFactory.createHondaEngine();
+    }
+}
+```
