@@ -139,3 +139,10 @@ public void main {
 ### 4-4-3 DIの落とし穴その２...スコープの違い
 
 - prototypeスコープを持ったコンポーネントをsingletonスコープを持ったコンポーネントの中で生成すると、スコープはsingletonスコープになる
+
+### 6-1-3 画面の作成
+
+#### formタグ内のactionの書き方
+
+- Springセキュリティを使わない場合：action="/login"で問題ない
+- Springセキュリティを使う場合：th:action="@{/login}"を使う
