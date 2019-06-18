@@ -143,6 +143,12 @@ public void main {
 ### 6-1-3 画面の作成
 
 - *LoginController.javaにPOSTリクエストがいくケースってどんなケースだろう？*
+- *login.htmlのsigninへのリンクは、Thymeleafの記法使わなくても今のところ問題なさそう。この後Springセキュリティ使うから今のうちにThymeleafにしているんだろう。*
+
+```html
+    <!--<a th:href="@{'/signup'}">ユーザー新規登録はこちら</a>-->
+    <a href="signup">ユーザー新規登録はこちら</a>
+```
 
 #### formタグ内のactionの書き方
 
