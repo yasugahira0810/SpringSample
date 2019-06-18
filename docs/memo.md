@@ -142,6 +142,8 @@ public void main {
 
 ### 6-1-3 画面の作成
 
+- *LoginController.javaにPOSTリクエストがいくケースってどんなケースだろう？*
+
 #### formタグ内のactionの書き方
 
 - Springセキュリティを使わない場合：action="/login"で問題ない
