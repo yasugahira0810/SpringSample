@@ -3,7 +3,8 @@
 - HelloController.javaというコントローラを作成しているけど、このコントローラを参照させるための設定はしていない。  
   @Controllerのおかげなのか@GetMappingのおかげなのかよくわからない。
 - return文にredirectをつけないと、URLは直前のURLを引き継いでしまう。
-- redirectの後に指定するのは、redirect先のControllerの１＠GetMappingなどで指定した値。
+- redirectの後に指定するのは、redirect先のControllerの＠GetMappingなどで指定した値。  
+- なので、redirect使わないならControllerは不要、使うならControllerが必要。 
 
 ## 3-2
 
