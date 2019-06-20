@@ -191,6 +191,23 @@ public void main {
 ```
 
 - @ModelAttributeアノテーションを付けると、自動でModelクラスに登録してくれる。  
-  登録名はデフォルトではクラス名の先頭を小文字に変えた文字列。上だとsignupForm。
+  登録名はデフォルトではクラス名の先頭を小文字に変えた文字列。上だとsignupForm。イメージ的には以下をやってくれる。
+
+```java
+    // @ModelAttributeアノテーションがやってくれることのイメージ
+    model.addAttribute("loginForm", form);
+
+    //なお、HelloControllerで@RequestParamを使っていた時には、実際にaddAttributeしていた
+    @PostMapping("/hello")
+    public String postRequest(@RequestParam("text1") String str, Model model) {
+
+        // 画面から受け取った文字列をModelに登録
+        model.addAttribute("sample", str);
+
+        // helloResponse.htmlに画面遷移
+        return "helloResponse";
+    }
+```
+
 - BindingResultをメソッドの引数に追加することで、**データバインドの結果を受け取る**。  
   受け取りなので、GET用のメソッドには使わず、POST用のメソッドに使っている。
