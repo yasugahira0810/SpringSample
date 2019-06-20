@@ -157,3 +157,40 @@ public void main {
 
 - Springセキュリティを使わない場合：action="/login"で問題ない
 - Springセキュリティを使う場合：th:action="@{/login}"を使う
+
+### 6-2-1 データバインドの概要（*フォームクラスの説明*）
+
+#### データバインド
+
+- 画面の入力項目とオブジェクトのフィールドのマッピングを行うこと。  
+- また、画面から渡された値を、フィールドのデータ型に合わせて変換すること。
+- HTMLとControllerの間でデータのやり取りをするインスタンスというイメージで、これをフォームクラスと呼ぶ。
+
+#### データバインド用アノテーション一覧
+
+- @NumberFormat: 指定されたフォーマットの文字列を数値型に変換する
+- @DateTimeFormat: 指定されたフォーマットの文字列を日付型に変換する
+
+#### 手順
+
+- controllerと同階層にdomain/modelなどのディレクトリ配下にフォームクラスを作成
+
+### フォームクラスの受け渡し
+
+- Contollerのメソッドはフォームクラスの受け渡し設定前後で、以下のように変わる
+
+```java
+
+    // 前
+    @PostMapping("/signup")
+    public String postSignUp(Model model) {
+
+    // 後
+    @PostMapping("/signup")
+    public String postSignUp(@ModelAttribute SignupForm form, BindingResult bindingResult, Model model) {
+```
+
+- @ModelAttributeアノテーションを付けると、自動でModelクラスに登録してくれる。  
+  登録名はデフォルトではクラス名の先頭を小文字に変えた文字列。上だとsignupForm。
+- BindingResultをメソッドの引数に追加することで、**データバインドの結果を受け取る**。  
+  受け取りなので、GET用のメソッドには使わず、POST用のメソッドに使っている。

@@ -3,9 +3,13 @@ package com.example.demo.login.controller;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.example.demo.login.domain.model.SignupForm;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -32,7 +36,7 @@ public class SignupController {
      * ユーザー登録画面のGETメソッド用処理.
      */
     @GetMapping("/signup")
-    public String getSignUp(Model model) {
+    public String getSignUp(@ModelAttribute SignupForm form, Model model) {
 
         // ラジオボタンの初期化メソッド呼び出し
         radioMarriage = initRadioMarrige();
@@ -48,9 +52,21 @@ public class SignupController {
      * ユーザー登録画面のPOSTメソッド用処理.
      */
     @PostMapping("/signup")
-    public String postSignUp(Model model) {
+    public String postSignUp(@ModelAttribute SignupForm form, BindingResult bindingResult, Model model) {
+
+        // 入力チェックに引っかかった場合、ユーザー登録画面に戻る
+        if (bindingResult.hasErrors()) {
+
+            // GETリクエスト用のメソッドを呼び出して、ユーザー登録画面に戻ります
+            return getSignUp(form, model);
+
+        }
+
+        // formの中身をコンソールに出して確認します
+        System.out.println(form);
 
         // login.htmlにリダイレクト
         return "redirect:/login";
+
     }
 }
