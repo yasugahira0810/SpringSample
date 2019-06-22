@@ -28,4 +28,15 @@ public class LoginController {
         // login.htmlに画面遷移
         return "login/login";
     }
+
+    /**
+     * ログイン画面のPOSTメソッド用処理.
+     */
+    @GetMapping("/ababa")
+    public String postAbaba(Model model) {
+
+        System.out.println("##########   postLogin Method executed   ##########");
+        // login.htmlに画面遷移
+        return "ababa/ababa";
+    }
 }
