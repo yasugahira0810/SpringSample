@@ -226,3 +226,25 @@ th:object="$<ModelAttributeのキー名>"
 ```
 th:field="$<フィールド名>"
 ```
+
+### 7.1.2 AOPの用語
+
+- Advice: AOPで実行する処理
+- Pointcut: 処理を実行するクラスやメソッド
+- JoinPoint: 処理の実行タイミング
+
+#### JoinPoint
+
+||呼び出し|正常終了|異常終了|
+|---|:---:|:---:|:---:|
+|Before|○|-|-|
+|After|-|○|○|
+|AfterReturning|-|○|-|
+|AfterThrowing|-|-|○|
+|Around|○|○|○|
+
+### 7.1.3 AOPの内部の仕組み
+
+- Beanメソッドの呼び出しはProxy経由で行われる。このProxyがAdviceを実行する。
+- *AOPされる側のBeanメソッドにはいっさい手が入らない。*
+
