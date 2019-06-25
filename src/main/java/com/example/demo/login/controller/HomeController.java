@@ -1,5 +1,7 @@
 package com.example.demo.login.controller;
 
+import com.example.demo.login.domain.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ public class HomeController {
     public String getHome(Model model) {
         model.addAttribute("contents", "login/home :: home_contents");
 
-        return "login/home_layout";
+        return "login/homeLayout";
     }
 
     @PostMapping("/logout")

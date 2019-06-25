@@ -26,7 +26,7 @@ public class LoginController {
 
         System.out.println("##########   postLogin Method executed   ##########");
         // login.htmlに画面遷移
-        return "login/login";
+        return "redirect:/home";
     }
 
     /**
