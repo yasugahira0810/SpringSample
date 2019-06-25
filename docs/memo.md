@@ -17,8 +17,8 @@
 
 ### *Controller => HTMLの画面の値の受け渡し*
 
-- Controller: model.Attributeに任意のキー、HTMLの入力内容を指定した値をセットする。
-- HTML: th:text属性にmodel.Attributeで登録したキーを指定することで、Controllerから値を受け取れる。
+- Controller: model.addAttributeに任意のキー、HTMLの入力内容を指定した値をセットする。
+- HTML: th:text属性にmodel.addAttributeで登録したキーを指定することで、Controllerから値を受け取れる。
 
 ## 3-3
 
@@ -257,3 +257,17 @@ th:field="$<フィールド名>"
   + DBの接続やクローズの処理を書かないで済む
   + DB製品を抽象化して、DB製品固有のエラーコードを適切な例外で投げてくれる
   代表的な実装クラスはJdbcTemplateとNamedParameterJdbcTemplate
+
+  ### 8.2.2 画面などの作成
+
+  - *ここで使っているth:includeあたりとlayout dialectの使い分けってどうすればいいのか？*
+  - *HomeController.javaの中でUserServiceをDIしているが、この時点ではUserService作っていないので、エラーになる*
+  
+  #### DTO
+  
+  - コントローラクラスやサービスクラスなどの間でやり取りするためのクラスをDomainObjectといったり、DTO(DataTransferObject)という
+  - テーブルのカラムをフィールドに持つためのクラス
+
+  #### DAT
+
+  - リポジトリ実装クラスを簡単に切り替えるためのインタフェース
