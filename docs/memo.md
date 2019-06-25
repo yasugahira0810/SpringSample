@@ -248,3 +248,12 @@ th:field="$<フィールド名>"
 - Beanメソッドの呼び出しはProxy経由で行われる。このProxyがAdviceを実行する。
 - *AOPされる側のBeanメソッドにはいっさい手が入らない。*
 
+## 8.1 SpringJDBCとは
+
+- JDBC: JavaでDBにアクセスするためのライブラリ
+- SpringJDBC: JDBCをSpringでもっと簡単に使えるようにしたもの。  
+  イメージ: アプリ <=> SpringJDBC <=> JDBC <=> DB  
+  主な利点は以下の通り
+  + DBの接続やクローズの処理を書かないで済む
+  + DB製品を抽象化して、DB製品固有のエラーコードを適切な例外で投げてくれる
+  代表的な実装クラスはJdbcTemplateとNamedParameterJdbcTemplate
