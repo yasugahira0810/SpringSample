@@ -285,3 +285,8 @@ th:field="$<フィールド名>"
 
   - 動的なURLに対応したメソッドを作るためには、@GetMapping(/userDetail/{id})のようにする
   - @PathVariableをつけると、渡されてきたURLの値を引数の変数に入れられる
+
+  ### 8.3.4
+
+  - 更新と削除でURLとHTTPメソッドが同じ場合、HTMLのname属性をコントローラメソッドの第２引数に指定することで、両者を分ける。　
+  - *このケースだったら更新は@PostMapping, 削除は@DeleteMappingを使えばいいのでは？と思わなくもない。*
