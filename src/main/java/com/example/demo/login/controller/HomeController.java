@@ -1,5 +1,8 @@
 package com.example.demo.login.controller;
 
+import java.util.List;
+
+import com.example.demo.login.domain.model.User;
 import com.example.demo.login.domain.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +24,24 @@ public class HomeController {
         return "login/homeLayout";
     }
 
+    @GetMapping("/userList")
+    public String getUserList(Model model) {
+        model.addAttribute("contents", "login/userList :: userList_contents");
+        List<User> userList = userService.selectMany();
+        model.addAttribute("userList", userList);
+        int count = userService.count();
+        model.addAttribute("userListCount", count);
+        return "login/homeLayout";
+    }
+
     @PostMapping("/logout")
     public String postLogout() {
         return "redirect:login";
+    }
+
+    @GetMapping("/userList/csv")
+    public String getUserListCsv(Model model) {
+        return getUserList(model);
     }
 
 }

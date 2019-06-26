@@ -3,6 +3,8 @@ package com.example.demo.login.domain.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import com.example.demo.login.domain.model.User;
 import com.example.demo.login.domain.repository.UserDao;
 
@@ -29,5 +31,13 @@ public class UserService {
         }
 
         return result;
+    }
+
+    public int count() {
+        return dao.count();
+    }
+
+    public List<User> selectMany() {
+        return dao.selectMany();
     }
 }
