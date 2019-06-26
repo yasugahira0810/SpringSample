@@ -279,3 +279,9 @@ th:field="$<フィールド名>"
   - update: 登録、更新、削除に用いる。戻り値は登録したレコード数
   - queryForObject: カウントの結果やカラムを1つだけ取得する場合に用いる。戻り値は取得したレコード数。
   - queryForList: 複数件のselectに用いる。戻り値の型にはList<Map<String, Object>>を指定。Listが行、Mapが列を表す。
+  - queryForMap: レコード1件取得。戻り値はMap<String, Object>型。
+
+  ### 8.3.3
+
+  - 動的なURLに対応したメソッドを作るためには、@GetMapping(/userDetail/{id})のようにする
+  - @PathVariableをつけると、渡されてきたURLの値を引数の変数に入れられる
