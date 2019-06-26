@@ -271,3 +271,11 @@ th:field="$<フィールド名>"
   #### DAO
 
   - リポジトリ実装クラスを簡単に切り替えるためのインタフェース
+
+  ## 8.3
+
+  ### JdbcTemplateのメソッド
+
+  - update: 登録、更新、削除に用いる。戻り値は登録したレコード数
+  - queryForObject: カウントの結果やカラムを1つだけ取得する場合に用いる。戻り値は取得したレコード数。
+  - queryForList: 複数件のselectに用いる。戻り値の型にはList<Map<String, Object>>を指定。Listが行、Mapが列を表す。
