@@ -258,38 +258,40 @@ th:field="$<フィールド名>"
   + DB製品を抽象化して、DB製品固有のエラーコードを適切な例外で投げてくれる
   代表的な実装クラスはJdbcTemplateとNamedParameterJdbcTemplate
 
-  ### 8.2.2 画面などの作成
+### 8.2.2 画面などの作成
 
-  - *ここで使っているth:includeあたりとlayout dialectの使い分けってどうすればいいのか？*
-  - *HomeController.javaの中でUserServiceをDIしているが、この時点ではUserService作っていないので、エラーになる*
+- *ここで使っているth:includeあたりとlayout dialectの使い分けってどうすればいいのか？*
+- *HomeController.javaの中でUserServiceをDIしているが、この時点ではUserService作っていないので、エラーになる*
   
-  #### DTO
+#### DTO
   
-  - コントローラクラスやサービスクラスなどの間でやり取りするためのクラスをDomainObjectといったり、DTO(DataTransferObject)という
-  - テーブルのカラムをフィールドに持つためのクラス
+- コントローラクラスやサービスクラスなどの間でやり取りするためのクラスをDomainObjectといったり、DTO(DataTransferObject)という
+- テーブルのカラムをフィールドに持つためのクラス
 
-  #### DAO
+#### DAO
 
-  - リポジトリ実装クラスを簡単に切り替えるためのインタフェース
+- リポジトリ実装クラスを簡単に切り替えるためのインタフェース
 
-  ## 8.3
+## 8.3
 
-  ### JdbcTemplateのメソッド
+### JdbcTemplateのメソッド
 
-  - update: 登録、更新、削除に用いる。戻り値は登録したレコード数
-  - queryForObject: カウントの結果やカラムを1つだけ取得する場合に用いる。戻り値は取得したレコード数。
-  - queryForList: 複数件のselectに用いる。戻り値の型にはList<Map<String, Object>>を指定。Listが行、Mapが列を表す。
-  - queryForMap: レコード1件取得。戻り値はMap<String, Object>型。
+- update: 登録、更新、削除に用いる。戻り値は登録したレコード数
+- queryForObject: カウントの結果やカラムを1つだけ取得する場合に用いる。戻り値は取得したレコード数。
+- queryForList: 複数件のselectに用いる。戻り値の型にはList<Map<String, Object>>を指定。Listが行、Mapが列を表す。
+- queryForMap: レコード1件取得。戻り値はMap<String, Object>型。
 
-  ### 8.3.3
+### 8.3.3
 
-  - 動的なURLに対応したメソッドを作るためには、@GetMapping(/userDetail/{id})のようにする
-  - @PathVariableをつけると、渡されてきたURLの値を引数の変数に入れられる
+- 動的なURLに対応したメソッドを作るためには、@GetMapping(/userDetail/{id})のようにする
+- @PathVariableをつけると、渡されてきたURLの値を引数の変数に入れられる
 
-  ### 8.3.4
+### 8.3.4
 
-  - 更新と削除でURLとHTTPメソッドが同じ場合、HTMLのname属性をコントローラメソッドの第２引数に指定することで、両者を分ける。　
-  - *このケースだったら更新は@PostMapping, 削除は@DeleteMappingを使えばいいのでは？と思わなくもない。*  
-    *=> HTMLのformはGETとPOSTしかサポートしていない。そのためDELETEではなく、POSTを使っているんだと気付いた。*  
-    *やろうとすればできるようだが、一般的にはPUT/DELETEはREST API向けのリクエストをマッピングする際に用いるらしい。*  
-    *今回は書籍のままにしようと思う。*
+- 更新と削除でURLとHTTPメソッドが同じ場合、HTMLのname属性をコントローラメソッドの第２引数に指定することで、両者を分ける。　
+- *このケースだったら更新は@PostMapping, 削除は@DeleteMappingを使えばいいのでは？と思わなくもない。*  
+  *=> HTMLのformはGETとPOSTしかサポートしていない。そのためDELETEではなく、POSTを使っているんだと気付いた。*  
+  *やろうとすればできるようだが、一般的にはPUT/DELETEはREST API向けのリクエストをマッピングする際に用いるらしい。*  
+  *今回は書籍のままにしようと思う。*
+
+### RowMapper
