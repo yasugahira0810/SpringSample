@@ -306,3 +306,9 @@ th:field="$<フィールド名>"
 ### 8.3.8 ResultSetExecutor
 
 - 複数件のselect結果をオブジェクトにマッピングする場合に使う
+
+### 8.3.9 RowCallbackHandlerの実装
+
+- RowMapper, ResultSetExecutorと異なり、戻り値を返さない
+- 時間のかかる処理の実行中、処理が終わるまで別のことができる
+- ファイル出力やデータチェックに利用される
