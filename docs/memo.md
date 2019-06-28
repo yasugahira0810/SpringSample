@@ -312,3 +312,47 @@ th:field="$<フィールド名>"
 - RowMapper, ResultSetExecutorと異なり、戻り値を返さない
 - 時間のかかる処理の実行中、処理が終わるまで別のことができる
 - ファイル出力やデータチェックに利用される
+
+## 8.4 NamedParameterJdbcTemplateの実装
+
+- JdbcTemplateではPreparedStatementでメソッドの引数の順番に注意が必要だったが、NamedParameterJdbcTemplateでは必要なくなる。
+- *記述量多いけど、可読性上がる感じ？*
+
+```java
+    // JdbcTemplate
+    // Userテーブルにデータを1件insert.
+    @Override
+    public int insertOne(User user) throws DataAccessException {
+
+        // １件登録
+        int rowNumber = jdbc.update(
+                "INSERT INTO m_user(user_id," + " password," + " user_name," + " birthday," + " age," + " marriage,"
+                        + " role)" + " VALUES(?, ?, ?, ?, ?, ?, ?)",
+                user.getUserId(), user.getPassword(), user.getUserName(), user.getBirthday(), user.getAge(),
+                user.isMarriage(), user.getRole());
+
+        return rowNumber;
+    }
+```
+
+```java
+    // NamedParameterJdbcTemplate
+    // Userテーブルにデータを1件insert.
+    @Override
+    public int insertOne(User user) {
+
+        // SQL文
+        String sql = "INSERT INTO m_user(user_id," + " password," + " user_name," + " birthday," + " age,"
+                + " marriage," + " role)" + " VALUES(:userId," + " :password," + " :userName," + " :birthday,"
+                + " :age," + " :marriage," + " :role)";
+
+        // パラメーター
+        SqlParameterSource params = new MapSqlParameterSource().addValue("userId", user.getUserId())
+                .addValue("password", user.getPassword()).addValue("userName", user.getUserName())
+                .addValue("birthday", user.getBirthday()).addValue("age", user.getAge())
+                .addValue("marriage", user.isMarriage()).addValue("role", user.getRole());
+
+        // SQL実行
+        return jdbc.update(sql, params);
+    }
+
