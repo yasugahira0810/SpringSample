@@ -375,3 +375,11 @@ th:field="$<フィールド名>"
   + WhiteLabelの代わり。必ず用意すべき
 2. HTTPエラー毎のエラーページ
   + エラー毎にメッセージを変えたい場合に利用する
+
+### 9.2.1 共通エラーページ
+
+- src/main/resources/template配下にerror.htmlを用意すればよい
+
+### 9.2.2 HTTPエラー毎のエラーページ
+
+- src/main/resources/template配下にerrorディレクトリを作成して404.htmlなどのファイルを用意すればよい
