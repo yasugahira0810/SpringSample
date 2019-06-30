@@ -439,3 +439,15 @@ th:field="$<フィールド名>"
 
 - 学習のためログイン画面でトークンを送る設定をしたが、th:action属性を使うとタイムリーフが自動でトークンを追加するので、設定不要
 - *フロントをVue.jsで実装する際などは設定が必要そう*
+
+## 10.5 認可
+
+### 10.5.1 URLの認可
+
+- URLの認可: 権限がないユーザにはURLにアクセスさせない
+- Springではロール名の先頭に"ROLE_"を付けるルールになっている
+
+### 10.5.2 画面表示の認可
+
+- 画面表示の認可: 権限がないユーザの画面に項目を表示しない
+- *thymeleaf-extras-springsecurity4だと一般権限でもアドミン用画面が見えてしまって、pom.xmlとhomeLayout.htmlをthymeleaf-extras-springsecurity5にしたら動いた。[参考](https://github.com/thymeleaf/thymeleaf-extras-springsecurity/issues/61)*
