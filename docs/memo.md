@@ -399,4 +399,16 @@ th:field="$<フィールド名>"
 
 # 10章 Springセキュリティ
 
-- 
+### 10.3.2 ログイン処理の実装
+
+- ログイン処理を追加するにはhttp.formLogin()にメソッドチェーンで条件を追加する
+
+```java
+        // ログイン処理
+        http.formLogin().loginProcessingUrl("/login") // HTMLNのフォームタグのaction属性と一致させる
+                .loginPage("/login") // コントローラクラスの@GetMappingの引数と一致させる
+                .failureUrl("/login")
+                .usernameParameter("userId") // inputタグのname属性と一致させる
+                .passwordParameter("password") // inputタグのname属性と一致させる
+                .defaultSuccessUrl("/home", true);
+```
