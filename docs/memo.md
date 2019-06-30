@@ -451,3 +451,11 @@ th:field="$<フィールド名>"
 
 - 画面表示の認可: 権限がないユーザの画面に項目を表示しない
 - *thymeleaf-extras-springsecurity4だと一般権限でもアドミン用画面が見えてしまって、pom.xmlとhomeLayout.htmlをthymeleaf-extras-springsecurity5にしたら動いた。[参考](https://github.com/thymeleaf/thymeleaf-extras-springsecurity/issues/61)*
+
+# 11 RESTサービス
+
+### 11.2.3
+
+- ディレクトリ構成のWebConfig.javaがなくて、なぜないか探したところ、6章のバリデーションで、独自メッセージを扱う時に用意するメッセージで独自メッセージ扱わないなら不要のファイルだった。なので特に問題なし。
+- @RestControllerを付けると、各メソッドの戻り値がHTMLファイルを探さなくなる
+- *RESTサービスのみCSRF対策を無効にするとのことだが、なんで？実サービスでの無効化はありなのか？*
