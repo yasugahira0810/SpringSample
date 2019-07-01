@@ -61,30 +61,26 @@ public class UserRestController {
         return str;
     }
 
-    // /**
-    // * ユーザー１件登録
-    // */
-    // @PutMapping("/rest/update")
-    // public String putUserOne(@RequestBody User user) {
+    /**
+     * ユーザー１件登録
+     */
+    @PutMapping("/rest/update")
+    public String putUserOne(@RequestBody User user) {
 
-    // // ユーザーを１件登録
-    // boolean result = service.update(user);
+        // ユーザーを１件登録
+        boolean result = service.update(user);
 
-    // String str = "";
+        String str = "";
 
-    // if(result == true) {
+        if (result == true) {
+            str = "{\"result\":\"ok\"}";
+        } else {
+            str = "{\"result\":\"error\"}";
+        }
 
-    // str = "{\"result\":\"ok\"}";
-
-    // } else {
-
-    // str = "{\"result\":\"error\"}";
-
-    // }
-
-    // // 結果用の文字列をリターン
-    // return str;
-    // }
+        // 結果用の文字列をリターン
+        return str;
+    }
 
     // @DeleteMapping("/rest/delete/{id:.+}")
     // public String deleteUserOne(@PathVariable("id") String userId) {

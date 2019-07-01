@@ -467,3 +467,9 @@ th:field="$<フィールド名>"
 ```bash
 curl -X POST -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"31","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/insert
 ```
+
+### 11.3.3
+
+```bash
+curl -X PUT -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"32","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/insert
+```
