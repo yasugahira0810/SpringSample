@@ -40,30 +40,26 @@ public class UserRestController {
         return service.selectOne(userId);
     }
 
-    // /**
-    // * ユーザー１件登録
-    // */
-    // @PostMapping("/rest/insert")
-    // public String postUserOne(@RequestBody User user) {
+    /**
+     * ユーザー１件登録
+     */
+    @PostMapping("/rest/insert")
+    public String postUserOne(@RequestBody User user) {
 
-    // // ユーザーを１件登録
-    // boolean result = service.insert(user);
+        // ユーザーを１件登録
+        boolean result = service.insert(user);
 
-    // String str = "";
+        String str = "";
 
-    // if(result == true) {
+        if (result == true) {
+            str = "{\"result\":\"ok\"}";
+        } else {
+            str = "{\"result\":\"error\"}";
+        }
 
-    // str = "{\"result\":\"ok\"}";
-
-    // } else {
-
-    // str = "{\"result\":\"error\"}";
-
-    // }
-
-    // // 結果用の文字列をリターン
-    // return str;
-    // }
+        // 結果用の文字列をリターン
+        return str;
+    }
 
     // /**
     // * ユーザー１件登録

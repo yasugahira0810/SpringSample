@@ -459,3 +459,11 @@ th:field="$<フィールド名>"
 - ディレクトリ構成のWebConfig.javaがなくて、なぜないか探したところ、6章のバリデーションで、独自メッセージを扱う時に用意するメッセージで独自メッセージ扱わないなら不要のファイルだった。なので特に問題なし。
 - @RestControllerを付けると、各メソッドの戻り値がHTMLファイルを探さなくなる
 - *RESTサービスのみCSRF対策を無効にするとのことだが、なんで？実サービスでの無効化はありなのか？*
+
+### 11.3.2
+
+- @RequestBodyを使うと、HTTPリクエストのボディ部分をコントローラメソッドの引数にマッピングしてくれるので、POSTメソッドでもHTTPボディを受け取ることができる
+
+```bash
+curl -X POST -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"31","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/insert
+```

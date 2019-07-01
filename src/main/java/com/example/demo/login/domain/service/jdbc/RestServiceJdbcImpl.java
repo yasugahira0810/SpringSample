@@ -23,18 +23,13 @@ public class RestServiceJdbcImpl implements RestService {
     @Override
     public boolean insert(User user) {
 
-        // int result = dao.insertOne(user);
+        int result = dao.insertOne(user);
 
-        // if(result == 0) {
-
-        // return false;
-
-        // } else {
-
-        // return true;
-
-        // }
-        return false;
+        if (result == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     // １件検索用メソッド
