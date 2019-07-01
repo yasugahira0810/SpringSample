@@ -82,25 +82,21 @@ public class UserRestController {
         return str;
     }
 
-    // @DeleteMapping("/rest/delete/{id:.+}")
-    // public String deleteUserOne(@PathVariable("id") String userId) {
+    @DeleteMapping("/rest/delete/{id:.+}")
+    public String deleteUserOne(@PathVariable("id") String userId) {
 
-    // // ユーザーを１件削除
-    // boolean result = service.delete(userId);
+        // ユーザーを１件削除
+        boolean result = service.delete(userId);
 
-    // String str = "";
+        String str = "";
 
-    // if(result == true) {
+        if (result == true) {
+            str = "{\"result\":\"ok\"}";
+        } else {
+            str = "{\"result\":\"error\"}";
+        }
 
-    // str = "{\"result\":\"ok\"}";
-
-    // } else {
-
-    // str = "{\"result\":\"error\"}";
-
-    // }
-
-    // // 結果用の文字列をリターン
-    // return str;
-    // }
+        // 結果用の文字列をリターン
+        return str;
+    }
 }

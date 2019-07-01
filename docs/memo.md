@@ -473,3 +473,11 @@ curl -X POST -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","pa
 ```bash
 curl -X PUT -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"32","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/insert
 ```
+
+### 11.3.4
+
+```bash
+curl http://localhost:8080/rest/delete/tamura@co.jp -X DELETE
+```
+
+- @ResponseBodyをメソッドにつけると、戻り値をHTMLではなく、JSONなどに変更できる。RESTサービス以外に、JavaScriptからSpringにリクエストを投げて、非同期処理する際に用いる。
