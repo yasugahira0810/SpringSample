@@ -20,25 +20,25 @@ public class UserRestController {
     @Autowired
     RestService service;
 
-    // /**
-    // * ユーザー全件取得
-    // */
-    // @GetMapping("/rest/get")
-    // public List<User> getUserMany() {
+    /**
+     * ユーザー全件取得
+     */
+    @GetMapping("/rest/get")
+    public List<User> getUserMany() {
 
-    // // ユーザー全件取得
-    // return service.selectMany();
-    // }
+        // ユーザー全件取得
+        return service.selectMany();
+    }
 
-    // /**
-    // * ユーザー１件取得
-    // */
-    // @GetMapping("/rest/get/{id:.+}")
-    // public User getUserOne(@PathVariable("id") String userId) {
+    /**
+     * ユーザー１件取得
+     */
+    @GetMapping("/rest/get/{id:.+}")
+    public User getUserOne(@PathVariable("id") String userId) {
 
-    // // ユーザー１件取得
-    // return service.selectOne(userId);
-    // }
+        // ユーザー１件取得
+        return service.selectOne(userId);
+    }
 
     // /**
     // * ユーザー１件登録
