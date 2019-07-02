@@ -490,7 +490,14 @@ curl http://localhost:8080/rest/delete/tamura@co.jp -X DELETE
   （SpringBootを起動しないとBeanが作られず、コントローラクラスやサービスクラスが動かない。）  
   使い方は、テスト用のクラスにSpring用のアノテーションをいくつか付けるだけで、あとはJUnitそのまま。
 
-## 12.2.1 開発内容の説明
+### 12.2.1 開発内容の説明
 
 - リポジトリクラスのテスト: 簡単。リポジトリクラス特有のテストもある
 - コントローラクラスのテスト: 画面表示内容の確認と、モックを使ったテストを実施。ログイン後に表示される表示される画面のテストについても学ぶ
+
+## 12.3 リポジトリークラスのテスト
+
+### 12.3.1
+
+- @RunWith(SpringRunner.class): @RunWithはテストを何で実行するか指定できる。SpringRunnerはSpring用のJUnitを使えるクラス
+- @SpringBootTest: SpringBootを起動してからテストを始める
