@@ -501,3 +501,7 @@ curl http://localhost:8080/rest/delete/tamura@co.jp -X DELETE
 
 - @RunWith(SpringRunner.class): @RunWithはテストを何で実行するか指定できる。SpringRunnerはSpring用のJUnitを使えるクラス
 - @SpringBootTest: SpringBootを起動してからテストを始める
+
+### 12.3.2
+
+- @Sql: 引数のSQLを実行後にテストを走らせる。そのメソッドのみ有効。
