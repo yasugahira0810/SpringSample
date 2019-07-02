@@ -35,7 +35,7 @@ public class UserDaoTest {
     @Sql("/testdata.sql")
     public void countTest2() {
 
-        //カウントメソッドの結果が3件であることをテスト
+        // カウントメソッドの結果が3件であることをテスト
         assertEquals(dao.count(), 3);
     }
 }

@@ -471,7 +471,7 @@ curl -X POST -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","pa
 ### 11.3.3
 
 ```bash
-curl -X PUT -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"32","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/insert
+curl -X PUT -H 'Content-Type:application/json' -d '{"userId":"tamura@co.jp","password":"pass","userName":"tamura","birthday":"1986-11-05","age":"32","marriage":"false","role":"ROLE_ADMIN"}' http://localhost:8080/rest/update
 ```
 
 ### 11.3.4
@@ -505,3 +505,10 @@ curl http://localhost:8080/rest/delete/tamura@co.jp -X DELETE
 ### 12.3.2
 
 - @Sql: 引数のSQLを実行後にテストを走らせる。そのメソッドのみ有効。
+
+# 13 Spring + MyBatis
+
+## 13.1 MyBatisとは
+
+- MyBatisはSQLとオブジェクトのマッピングを設定ファイルで行うライブラリ。JDBCと競合するレイヤの技術
+- SpringでMyBatisを使う場合、アノテーション内にSQLを書く方法と設定ファイル内にSQLを書く方法がある。基本は設定ファイルを使う。DB製品に応じた切り替えが楽だから
